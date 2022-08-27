@@ -1,1 +1,1 @@
-worker: python3 src/xeno.py
+worker: npm start
