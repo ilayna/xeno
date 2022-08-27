@@ -19,3 +19,11 @@ const r = new Snoowrap({
     username: username,
     password: password,
   });
+
+const randomSub = r.getRandomSubmission('memes');
+const res = async () => {
+    await randomSub.then((sub) => {
+        console.log(sub.url);
+    });
+} 
+res();
