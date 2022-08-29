@@ -34,4 +34,37 @@ client.on('guildMemberAdd', async (member: GuildMember) => {
     } //id = wabulu's server (mine)    
 });
 
+client.on('messageReactionAdd', async (reaction, user) => {
+    if (reaction.message.guild){
+        if (reaction.message.guild.id === '879482564212056064') {
+            if (reaction.message.id === '943961019162701904') {
+                const role = reaction.message.guild?.roles.cache.find(x => x.id === '879637214580068353');
+                if (role) {
+                    const userRoles = reaction.message.member?.roles;
+                    if (userRoles?.cache.find(x => x.id === role.id) === undefined) {
+                        reaction.message.member?.roles.add(role);
+                    }
+                }
+            }
+        }
+    }    
+})
+
+client.on('messageReactionRemove', async (reaction, user) => {
+    if (reaction.message.guild){
+        if (reaction.message.guild.id === '879482564212056064') {
+            if (reaction.message.id === '943961019162701904') {
+                const role = reaction.message.guild?.roles.cache.find(x => x.id === '879637214580068353');
+                if (role) {
+                    const userRoles = reaction.message.member?.roles;
+                    if (userRoles?.cache.find(x => x.id === role.id) != undefined) {
+                        reaction.message.member?.roles.remove(role);
+                    }
+                }
+            }
+        }
+    }
+})
+
+
 client.login(token);
